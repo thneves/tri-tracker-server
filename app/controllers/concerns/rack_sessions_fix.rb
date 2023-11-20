@@ -6,6 +6,7 @@
   ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled.
 =end
 module RackSessionsFix
+  extend ActiveSupport::Concern
   class FakeRackSession < Hash
     def enabled?
       false
@@ -20,7 +21,7 @@ module RackSessionsFix
     private
 
     def set_fake_session
-      request.end['rack.session'] ||= FakeRackSession.new
+      request.env['rack.session'] ||= FakeRackSession.new
     end
   end
 end
