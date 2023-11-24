@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'tracks/index'
+  get 'tracks/create'
+  get 'tracks/destroy'
   root to: 'static#home'
 
   devise_for :users, path: '', path_names: {
@@ -11,5 +14,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resource :tracks, only: %i[index create destroy]
+  resources :tracks, only: [:index, :create, :destroy]
 end
