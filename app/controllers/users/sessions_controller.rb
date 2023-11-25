@@ -26,7 +26,7 @@ class Users::SessionsController < Devise::SessionsController
           Rails.application.credentials.devise_jwt_secret_key!).first
 
 
-        current_user = User.find(jwt_payload['subg'])
+        current_user = User.find(jwt_payload['sub'])
     end
 
     if current_user

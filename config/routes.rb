@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  get '/current_user', to: 'current_user#index'
+
   resources :tracks, only: [:index, :create, :destroy]
 end
