@@ -2,12 +2,12 @@ class TracksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    binding.pry
-    render json: {status: "All tracks"}
+    tracks = current_user.tracks.to_json
+
+    render json: {data: tracks, status: :ok }
   end
 
   def create
-    binding.pry
     render json: {status: "Create new track"}
   end
 
